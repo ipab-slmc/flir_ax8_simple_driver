@@ -8,12 +8,13 @@ project(flir_ax8_simple_driver)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  OpenCV
+  #OpenCV
   cv_bridge
   sensor_msgs
   roscpp
   #image_transport
 )
+find_package(OpenCV REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -40,6 +41,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ executable
@@ -54,4 +56,5 @@ add_executable(flir_ax8_simple_driver_rtsp src/flir_ax8_simple_driver_rtsp.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(flir_ax8_simple_driver_rtsp
    ${catkin_LIBRARIES}
+   ${OpenCV_LIBRARIES}
 )
